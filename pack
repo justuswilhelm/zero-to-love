@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+TARGET="game.love"
+INPUT="src"
+cd "$(dirname "$0")"
+CURRENT="$PWD"
+
+echo "Packing $TARGET file..."
+echo "Removing old $TARGET"
+rm -f "$TARGET"
+echo "Packing source files in $INPUT into $CURRENT/$TARGET"
+
+( cd "$CURRENT/$INPUT"; zip "$CURRENT/$TARGET" ./* )

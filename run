@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+trap "killall love" SIGHUP SIGINT SIGTERM
+TARGET="game.love"
+LOVE="/Applications/love.app/"
+cd "$(dirname "$0")"
+
+test -e $LOVE || (echo "Put LÖVE into your Applications folder"; false)
+
+"./pack"
+open -W "$LOVE" "$TARGET"
